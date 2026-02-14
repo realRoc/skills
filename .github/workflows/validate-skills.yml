@@ -1,0 +1,71 @@
+name: Validate Skills
+
+on:
+  pull_request:
+    paths:
+      - 'skills/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'skills/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate SKILL.md files
+        run: |
+          #!/bin/bash
+          set -e
+
+          echo "🔍 Validating SKILL.md files..."
+
+          # 检查所有 skills 目录
+          for skill_dir in skills/*; do
+            if [[ -d "$skill_dir" ]]; then
+              skill_name=$(basename "$skill_dir")
+              skill_file="$skill_dir/SKILL.md"
+
+              echo "Checking: $skill_name"
+
+              # 检查 SKILL.md 存在
+              if [[ ! -f "$skill_file" ]]; then
+                echo "❌ Missing SKILL.md in $skill_name"
+                exit 1
+              fi
+
+              # 检查 frontmatter
+              if ! grep -q "^---$" "$skill_file"; then
+                echo "❌ Missing YAML frontmatter in $skill_name"
+                exit 1
+              fi
+
+              # 检查必需字段
+              if ! grep -q "^name:" "$skill_file"; then
+                echo "❌ Missing 'name' field in $skill_name"
+                exit 1
+              fi
+
+              if ! grep -q "^description:" "$skill_file"; then
+                echo "❌ Missing 'description' field in $skill_name"
+                exit 1
+              fi
+
+              echo "✅ $skill_name is valid"
+            fi
+          done
+
+          echo ""
+          echo "✅ All skills validated successfully!"
+
+      - name: Test installation
+        run: |
+          npx skills add . --list
