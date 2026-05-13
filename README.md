@@ -18,6 +18,7 @@ npx skills add realRoc/skills
 | **agents-md-generator** | 从现有文档生成完整的 AGENTS.md 规范文档 |
 | **prd** | 生成产品需求文档(PRD) |
 | **ralph** | 将 PRD 转换为 Ralph 自主代理的 JSON 格式 |
+| **shumei-user-violation-audit** | 基于 MongoDB 用户和对话数据调用数美 input event, 输出按用户违禁率排序的 CSV |
 
 ## 安装选项
 
