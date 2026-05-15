@@ -19,6 +19,7 @@ npx skills add realRoc/skills
 | **prd** | 生成产品需求文档(PRD) |
 | **ralph** | 将 PRD 转换为 Ralph 自主代理的 JSON 格式 |
 | **shumei-user-violation-audit** | 基于 MongoDB 用户和对话数据调用数美 input event, 输出按用户违禁率排序的 CSV |
+| **newapi-usage-stats** | 通过 Tencent Cloud TAT 连入后端容器,查询 NewAPI MySQL 的 `logs` 表,产出指定时间窗内各模型的 RPM/TPM、峰值分钟与平均 tokens/请求 |
 
 ## 安装选项
 
