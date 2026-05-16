@@ -20,6 +20,7 @@ npx skills add realRoc/skills
 | **ralph** | 将 PRD 转换为 Ralph 自主代理的 JSON 格式 |
 | **shumei-user-violation-audit** | 基于 MongoDB 用户和对话数据调用数美 input event, 输出按用户违禁率排序的 CSV |
 | **newapi-usage-stats** | 通过 Tencent Cloud TAT 连入后端容器,查询 NewAPI MySQL 的 `logs` 表,产出指定时间窗内各模型的 RPM/TPM、峰值分钟与平均 tokens/请求 |
+| **ip-geo-distribution** | 批量解析 IP 列表的归属地（国内到省、海外到国家），输出 Markdown 分布表 + 占比；基于 ip-api.com 免费批量接口，免 key |
 
 ## 安装选项
 
